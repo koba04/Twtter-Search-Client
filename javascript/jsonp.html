@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Twitter Search Sample</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<style type="text/css">
+div#result { background-color: #FFFFEE;}
+</style>
+</head>
+<body>
+<h1>Twitter Search by JSONP</h1>
+<div>
+<input type="text" id="query" />
+<input type="button" id="search" value="Search!" />
+</div>
+<div id="result"></div>
+<script type="text/javascript">
+
+var query = document.getElementById("query");
+var search = document.getElementById("search");
+var result = document.getElementById("result");
+
+search.addEventListener('click', function (e) {
+    result.innerHTML = 'Now Loading...';
+    var api = 'http://search.twitter.com/search.json?callback=tweetParse&q=' + encodeURIComponent(query.value);
+    var script = document.createElement('script');
+    var head = document.getElementsByTagName('head').item(0);
+
+    script.setAttribute('type', 'text/javascript');
+    script.setAttribute('src', api);
+    script.setAttribute('charset', 'UTF-8');
+    head.appendChild(script);
+}, false);
+
+function tweetParse(tweets) {
+    result.innerHTML = '';
+    for (var i = 0; i < tweets.results.length; i++) {
+        var tweet = document.createElement('p');
+        tweet.innerHTML = '【' + tweets.results[i].from_user + '】' + tweets.results[i].text;
+        result.appendChild(tweet);
+    }
+}
+</script>
+</body>
