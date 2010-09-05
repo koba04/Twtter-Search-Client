@@ -11,6 +11,8 @@ binmode STDOUT, ':utf8';
 
 my $query = $ARGV[0];
 
+say "search query => $query";
+
 my $nt = Net::Twitter::Lite->new;
 
 my $result = $nt->search($query);

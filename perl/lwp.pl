@@ -15,7 +15,7 @@ my $query = $ARGV[0];
 my $uri = URI->new('http://search.twitter.com/search.json');
 $uri->query_form(q => $query);
 
-print $uri->as_string;
+say $uri->as_string;
 
 my $ua = LWP::UserAgent->new;
 my $res = $ua->get($uri);
