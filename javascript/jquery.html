@@ -20,7 +20,7 @@ $(function() {
     $("#search").click(function (e) {
         $("#result").html('Now Loading...');
         $.getJSON('http://search.twitter.com/search.json?callback=?',
-            {q: $("#query").attr("value")},
+            {q: $("#query").val()},
             function (tweets) {
                 $("#result").html('');
                 $.each(tweets.results, function(i, tweet) {
