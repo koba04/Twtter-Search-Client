@@ -37,9 +37,9 @@ public class Search {
 			
 			System.out.println("Parse is =>" + tweets.toString());
 			
-			for (JSONObject twets : tweets) {
-				System.out.println("【" + twets.get("from_user") + "】"
-						+ twets.get("text"));
+			for (JSONObject tweet : tweets) {
+				System.out.println("【" + tweet.get("from_user") + "】"
+						+ tweet.get("text"));
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
