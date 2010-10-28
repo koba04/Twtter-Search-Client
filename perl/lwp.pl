@@ -21,7 +21,7 @@ my $ua = LWP::UserAgent->new;
 my $res = $ua->get($uri);
 die 'HTTP Request Error =>' . $res->status_line if !$res->is_success;
 
-my $result = decode_json($res->content);
+my $result = decode_json($res->decoded_content);
 for my $tweet (@{$result->{results}}) {
     say '【' . $tweet->{from_user} . '】' . $tweet->{text};
 }
